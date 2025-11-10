@@ -1,10 +1,45 @@
-'use client';
+"use client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function SettingsPage() {
   return (
-    <div className="min-h-screen p-8">
-      <h1 className="text-2xl font-bold">Settings (protected placeholder)</h1>
-      <p className="text-sm text-gray-600">User settings form will go here.</p>
+    <div className="min-h-screen p-4 lg:p-6">
+      <div className="mx-auto max-w-3xl space-y-4">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Account Settings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form className="grid gap-4">
+              <div className="grid gap-2">
+                <label className="text-sm" htmlFor="displayName">Display name</label>
+                <Input id="displayName" placeholder="Your display name" />
+              </div>
+              <div className="grid gap-2">
+                <label className="text-sm" htmlFor="email">Email</label>
+                <Input id="email" type="email" placeholder="you@example.com" />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <label className="text-sm" htmlFor="password">New password</label>
+                  <Input id="password" type="password" placeholder="••••••••" />
+                </div>
+                <div className="grid gap-2">
+                  <label className="text-sm" htmlFor="confirm">Confirm password</label>
+                  <Input id="confirm" type="password" placeholder="••••••••" />
+                </div>
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" type="button">Cancel</Button>
+                <Button type="submit">Save changes</Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
