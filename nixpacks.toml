@@ -1,0 +1,13 @@
+[phases.setup]
+nixPkgs = ["bun"]
+nixLibs = ["openssl"]
+
+[phases.install]
+cmds = [
+  "bun install",
+  "bun run postinstall"
+]
+
+[start]
+cmd = "bun run start"
+

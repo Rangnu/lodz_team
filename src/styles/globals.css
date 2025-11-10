@@ -1,0 +1,7 @@
+/* Project global styles (placeholder) */
+
+:root{
+  --bg:#ffffff;
+}
+
+body{background:var(--bg);}
