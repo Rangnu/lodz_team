@@ -3,11 +3,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Header from "@/components/layout/Header";
 
 export default function SettingsPage() {
   return (
-    <div className="min-h-screen p-4 lg:p-6">
-      <div className="mx-auto max-w-3xl space-y-4">
+    <div className="relative min-h-screen">
+      <Header title="Settings" />
+      
+      <div className="p-4 lg:p-6">
+        <div className="mx-auto max-w-3xl space-y-4">
         <Card>
           <CardHeader>
             <CardTitle className="text-base">Account Settings</CardTitle>
@@ -39,6 +43,7 @@ export default function SettingsPage() {
             </form>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   );

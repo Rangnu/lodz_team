@@ -3,12 +3,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Header from "@/components/layout/Header";
 
 export default function ProfilePage({ params }: { params: { username: string } }) {
   const { username } = params;
   return (
-    <div className="min-h-screen p-4 lg:p-6">
-      <div className="mx-auto max-w-3xl space-y-4">
+    <div className="relative min-h-screen">
+      <Header title="Profile" />
+      
+      <div className="p-4 lg:p-6">
+        <div className="mx-auto max-w-3xl space-y-4">
         <Card>
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
@@ -46,6 +50,7 @@ export default function ProfilePage({ params }: { params: { username: string } }
             ))}
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   );
