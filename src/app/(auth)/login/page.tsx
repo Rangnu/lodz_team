@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -21,17 +22,20 @@ export default function LoginPage() {
     }
     try {
       setLoading(true);
-      const res = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message || "Login failed");
+
+      if (result?.error) {
+        toast.error("Invalid email or password");
+        return;
       }
-      toast.success("Logged in");
-      router.replace("/");
+
+      toast.success("Logged in successfully");
+      router.push("/feed");
+      router.refresh();
     } catch (err: any) {
       toast.error(err.message || "Something went wrong");
     } finally {
